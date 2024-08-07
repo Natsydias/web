@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Palabras del Ahorcado</title>
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido, Administrador</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="#" id="eliminarUsuarioLink">Eliminar Usuario</a>
+                <div id="eliminarUsuarioForm">
+                    <h2>Eliminar Usuario</h2>
+                    <form action="../../../backend/user/eliminar-usuario.php" method="post">
+                        <label for="nombreUsuarioEliminar">Nombre del Usuario a Eliminar:</label>
+                        <input type="text" id="nombreUsuarioEliminar" name="name"><br><br>
+                        <input type="submit" value="Eliminar Usuario">
+                    </form>
+                </div>
+            </li>
+            <li>
+                <a href="#" id="crearPalabraLink" style="text-decoration: none; color: #007bff; font-weight: bold;">Crear Palabra</a>
+                <div id="crearPalabraForm" style="display:none; margin-top: 20px;">
+                    <h2 style="color: #007bff; margin-bottom: 15px;">Crear Palabra</h2>
+                    <form action="../../../backend/pregunta/crear-pregunta.php" method="post">
+                        <div style="margin-bottom: 10px;">
+                            <label for="palabra" style="font-weight: bold; color: #555;">Palabra:</label><br>
+                            <input type="text" id="palabra" name="palabra" style="width: 100%; padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+                        </div>
+                        <input type="submit" value="Crear" style="background-color: #007bff; color: #fff; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#eliminarUsuarioForm').hide();
+            $('#crearPalabraForm').hide();
+
+            $('#eliminarUsuarioLink').click(function(){
+                $('#eliminarUsuarioForm').slideToggle();
+                $('#crearPalabraForm').hide(); // Oculta el formulario de crear palabra si se muestra
+            });
+
+            $('#crearPalabraLink').click(function(){
+                $('#crearPalabraForm').slideToggle();
+                $('#eliminarUsuarioForm').hide(); // Oculta el formulario de eliminar usuario si se muestra
+            });
+        });
+    </script>
+</body>
+</html>
